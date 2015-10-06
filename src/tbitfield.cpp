@@ -9,14 +9,24 @@
 
 TBitField::TBitField(int len)
 {
+	int bait;
+	pMem=new int[bait];
+	BitLen=len;
+	bait=len/sizeof(int);
+	
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
 {
+	pMem=bf.pMem;
+	*MemLen=bf.*MemLen;
+	BitLen=bf.BitLen;
 }
 
 TBitField::~TBitField()
 {
+	if (pMem!=NULL)
+		delete []pMem;
 }
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
